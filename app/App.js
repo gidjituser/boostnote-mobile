@@ -249,13 +249,15 @@ export default class App extends Component {
       const filteredSettingFile = JSON.parse(settingJsonFile).note.filter(setting => {
         return setting.name === fileName
       })[0]
-      fileList.push({
-        fileName: fileName,
-        content: content === '' ? 'Tap here and write something!' : content.split(/\r\n|\r|\n/)[0],
-        createdAt: filteredSettingFile.createdAt,
-        isStarred: filteredSettingFile.isStarred,
-        updatedAt: filteredSettingFile.updatedAt,
-      })
+      if (filteredSettingFile) {  
+          fileList.push({
+            fileName: fileName,
+            content: content === '' ? 'Tap here and write something!' : content.split(/\r\n|\r|\n/)[0],
+            createdAt: filteredSettingFile.createdAt,
+            isStarred: filteredSettingFile.isStarred,
+            updatedAt: filteredSettingFile.updatedAt,
+          })
+      }
     }
     fileList.sort((a, b) => {
       return a.createdAt < b.createdAt ? 1 : -1

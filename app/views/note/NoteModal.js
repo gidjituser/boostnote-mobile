@@ -76,7 +76,7 @@ export default class NoteModal extends React.Component {
     newJsonFile.push(filteredSettingFile)
     parsedSetting.note = newJsonFile
 
-    fs.writeFile(`${dirs.DocumentDir}/Boostnote/boostnote.json`, JSON.stringify(parsedSetting), 'utf8')
+    await fs.writeFile(`${dirs.DocumentDir}/Boostnote/boostnote.json`, JSON.stringify(parsedSetting), 'utf8')
       .catch(err => console.log(err))
   }
 
